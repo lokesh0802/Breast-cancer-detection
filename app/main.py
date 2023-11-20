@@ -251,31 +251,66 @@ def get_radar_chart(input_data):
   return fig
 
 
+#def add_predictions(input_data):
+#  model = pickle.load(open("model/model.pkl", "rb"))
+#  scaler = pickle.load(open("model/scaler.pkl", "rb"))
+#  
+#  input_array = np.array(list(input_data.values())).reshape(1, -1)
+#  
+#  input_array_scaled = scaler.transform(input_array)
+#  
+#  prediction = model.predict(input_array_scaled)
+#  
+#  st.subheader("Cell cluster prediction")
+#  st.write("The cell cluster is:")
+#  
+#  if prediction[0] == 0:
+#    st.write("<span class='diagnosis benign'>Benign</span>", unsafe_allow_html=True)
+#  else:
+#    st.write("<span class='diagnosis malicious'>Malicious</span>", unsafe_allow_html=True)
+#    
+#  
+#  st.write("Probability of being benign: ", model.predict_proba(input_array_scaled)[0][0])
+#  st.write("Probability of being malicious: ", model.predict_proba(input_array_scaled)[0][1])
+#  
+#  st.write("This app can assist medical professionals in making a diagnosis, but should not be used as a substitute for a professional diagnosis.")
+
 def add_predictions(input_data):
-  model = pickle.load(open("model/model.pkl", "rb"))
-  scaler = pickle.load(open("model/scaler.pkl", "rb"))
-  
-  input_array = np.array(list(input_data.values())).reshape(1, -1)
-  
-  input_array_scaled = scaler.transform(input_array)
-  
-  prediction = model.predict(input_array_scaled)
-  
-  st.subheader("Cell cluster prediction")
-  st.write("The cell cluster is:")
-  
-  if prediction[0] == 0:
-    st.write("<span class='diagnosis benign'>Benign</span>", unsafe_allow_html=True)
-  else:
-    st.write("<span class='diagnosis malicious'>Malicious</span>", unsafe_allow_html=True)
-    
-  
-  st.write("Probability of being benign: ", model.predict_proba(input_array_scaled)[0][0])
-  st.write("Probability of being malicious: ", model.predict_proba(input_array_scaled)[0][1])
-  
-  st.write("This app can assist medical professionals in making a diagnosis, but should not be used as a substitute for a professional diagnosis.")
+    # Load the model and scaler
+    model = pickle.load(open("model/model.pkl", "rb"))
+    scaler = pickle.load(open("model/scaler.pkl", "rb"))
 
+    # Convert input data to a numpy array
+    input_array = np.array(list(input_data.values())).reshape(1, -1)
 
+    # Scale the input data
+    input_array_scaled = scaler.transform(input_array)
+
+    # Make predictions
+    prediction = model.predict(input_array_scaled)
+    benign_prob, malicious_prob = model.predict_proba(input_array_scaled)[0]
+
+    # Display predictions with improved styling
+    st.subheader("Cell Cluster Prediction")
+
+    # Display the predicted cluster with colored styling
+    cluster_label = "Benign" if prediction[0] == 0 else "Malicious"
+    cluster_color = "green" if prediction[0] == 0 else "red"
+    st.markdown(f'<p style="font-size:24px; color:{cluster_color};">{cluster_label}</p>', unsafe_allow_html=True)
+
+    # Display probabilities with progress bars
+    st.markdown("<b>Probability of Being Benign:</b>", unsafe_allow_html=True)
+    st.progress(benign_prob)
+
+    st.markdown("<b>Probability of Being Malicious:</b>", unsafe_allow_html=True)
+    st.progress(malicious_prob)
+
+    # Add a disclaimer
+    st.info("This app can assist medical professionals in making a diagnosis, but should not be used as a substitute for a professional diagnosis.")
+
+# Example usage:
+input_data = {"feature1": 1.0, "feature2": 2.0, "feature3": 3.0}  # Replace with your input data
+add_predictions(input_data)
 
 # def main():
 #   st.set_page_config(
@@ -362,3 +397,54 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def add_predictions(input_data):
+    # Load the model and scaler
+    model = pickle.load(open("model/model.pkl", "rb"))
+    scaler = pickle.load(open("model/scaler.pkl", "rb"))
+
+    # Convert input data to a numpy array
+    input_array = np.array(list(input_data.values())).reshape(1, -1)
+
+    # Scale the input data
+    input_array_scaled = scaler.transform(input_array)
+
+    # Make predictions
+    prediction = model.predict(input_array_scaled)
+    benign_prob, malicious_prob = model.predict_proba(input_array_scaled)[0]
+
+    # Display predictions with improved styling
+    st.subheader("Cell Cluster Prediction")
+
+    # Display the predicted cluster with colored styling
+    cluster_label = "Benign" if prediction[0] == 0 else "Malicious"
+    cluster_color = "green" if prediction[0] == 0 else "red"
+    st.markdown(f'<p style="font-size:24px; color:{cluster_color};">{cluster_label}</p>', unsafe_allow_html=True)
+
+    # Display probabilities with progress bars
+    st.markdown("<b>Probability of Being Benign:</b>", unsafe_allow_html=True)
+    st.progress(benign_prob)
+
+    st.markdown("<b>Probability of Being Malicious:</b>", unsafe_allow_html=True)
+    st.progress(malicious_prob)
+
+    # Add a disclaimer
+    st.info("This app can assist medical professionals in making a diagnosis, but should not be used as a substitute for a professional diagnosis.")
+
+# Example usage:
+input_data = {"feature1": 1.0, "feature2": 2.0, "feature3": 3.0}  # Replace with your input data
+add_predictions(input_data)
