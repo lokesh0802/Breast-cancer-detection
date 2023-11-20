@@ -329,8 +329,15 @@ def main():
     input_data = add_sidebar()
 
     st.title("Breast Cancer Predictor")
-    st.write("Please connect this app to your cytology lab to help diagnose breast cancer from your tissue sample. This app predicts using a machine learning model whether a breast mass is benign or malignant based on the measurements it receives from your cytology lab. You can also update the measurements by hand using the sliders in the sidebar.")
-
+    st.write("Breast cancer symptoms can manifest in various ways, and awareness of these signs is crucial for early detection and intervention.")
+    st.write("1. Lump or Mass: The presence of a palpable lump or mass in the breast, distinguishable from the surrounding tissue.")
+    st.write("2. Changes in Size or Shape: Observable alterations in the size or shape of the breast, including asymmetry between breasts.") 
+    st.write("3. Skin Changes: Changes in the skin texture, such as redness, dimpling, or puckering, resembling the peel of an orange.")
+    st.write("4. Nipple Changes: Changes in the nipple, such as inversion, retraction, or changes in direction.")
+    st.write("5. Nipple Discharge: Unexplained nipple discharge, especially if it is bloody. ")
+    st.write("6. Pain or Discomfort: Some individuals may experience discomfort or pain in the breast or nipple area.")
+    st.write("7. Swelling: Swelling or enlargement of one breast without an apparent cause.")
+    st.write("8. Lymph Node Changes: Swelling or changes in the lymph nodes under the arm or around the collarbone, indicating potential spread.")
     col1, col2 = st.columns([4, 1])
 
     with col1:
