@@ -14,11 +14,63 @@ def get_clean_data():
   
   return data
 
+
+#def add_sidebar():
+#  st.sidebar.header("Breast Cell Measurements")
+#  
+#  data = get_clean_data()
+#  
+#  slider_labels = [
+#        ("Radius (mean)", "radius_mean"),
+#        ("Texture (mean)", "texture_mean"),
+#        ("Perimeter (mean)", "perimeter_mean"),
+#        ("Area (mean)", "area_mean"),
+#        ("Smoothness (mean)", "smoothness_mean"),
+#        ("Compactness (mean)", "compactness_mean"),
+#        ("Concavity (mean)", "concavity_mean"),
+#        ("Concave points (mean)", "concave points_mean"),
+#        ("Symmetry (mean)", "symmetry_mean"),
+#        ("Fractal dimension (mean)", "fractal_dimension_mean"),
+#        ("Radius (se)", "radius_se"),
+#        ("Texture (se)", "texture_se"),
+#        ("Perimeter (se)", "perimeter_se"),
+#        ("Area (se)", "area_se"),
+#        ("Smoothness (se)", "smoothness_se"),
+#        ("Compactness (se)", "compactness_se"),
+#        ("Concavity (se)", "concavity_se"),
+#        ("Concave points (se)", "concave points_se"),
+#        ("Symmetry (se)", "symmetry_se"),
+#        ("Fractal dimension (se)", "fractal_dimension_se"),
+#        ("Radius (worst)", "radius_worst"),
+#        ("Texture (worst)", "texture_worst"),
+#        ("Perimeter (worst)", "perimeter_worst"),
+#        ("Area (worst)", "area_worst"),
+#        ("Smoothness (worst)", "smoothness_worst"),
+#        ("Compactness (worst)", "compactness_worst"),
+#        ("Concavity (worst)", "concavity_worst"),
+#        ("Concave points (worst)", "concave points_worst"),
+#        ("Symmetry (worst)", "symmetry_worst"),
+#        ("Fractal dimension (worst)", "fractal_dimension_worst"),
+#    ]
+#
+#  input_dict = {}
+#
+#  for label, key in slider_labels:
+#    input_dict[key] = st.sidebar.slider(
+#      label,
+#      min_value=float(0),
+#      max_value=float(data[key].max()),
+#      value=float(data[key].mean()),
+#      
+#    )
+#    
+#  return input_dict
+
 def add_expander():
     with st.expander("Breast Cell Measurements"):
         data = get_clean_data()
 
-        slider_labels = [
+    slider_labels = [
             ("Radius (mean)", "radius_mean"),
             ("Texture (mean)", "texture_mean"),
             ("Perimeter (mean)", "perimeter_mean"),
@@ -51,9 +103,9 @@ def add_expander():
             ("Fractal dimension (worst)", "fractal_dimension_worst"),
         ]
 
-        input_dict = {}
+    input_dict = {}
 
-        for label, key in slider_labels:
+    for label, key in slider_labels:
             input_dict[key] = st.slider(
                 label,
                 min_value=float(0),
@@ -61,8 +113,7 @@ def add_expander():
                 value=float(data[key].mean()),
             )
 
-        return input_dict
-
+    return input_dict
 
 def get_scaled_values(input_dict):
   data = get_clean_data()
@@ -270,7 +321,7 @@ def add_predictions(input_data):
   st.write("Probability of being benign: ", model.predict_proba(input_array_scaled)[0][0])
   st.write("Probability of being malicious: ", model.predict_proba(input_array_scaled)[0][1])
   
-  st.write("A breast cancer prediction app serves as a multifaceted tool with significant implications for healthcare. Primarily designed for early detection, the app utilizes machine learning models to predict the likelihood of malignancy in breast masses based on provided measurements. This predictive capability not only aids medical professionals, including oncologists and radiologists, in their diagnostic processes but also empowers patients with valuable insights into their breast health. Through risk assessments and informative predictions, the app contributes to proactive health management.")
+  st.write("This app can assist medical professionals in making a diagnosis, but should not be used as a substitute for a professional diagnosis.")
 
 
 
