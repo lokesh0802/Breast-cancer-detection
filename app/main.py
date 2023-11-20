@@ -61,7 +61,7 @@ def add_sidebar():
       min_value=float(0),
       max_value=float(data[key].max()),
       value=float(data[key].mean()),
-      style={"background-color": "skyblue"}
+      
     )
     
   return input_dict
