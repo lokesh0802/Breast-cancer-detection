@@ -16,7 +16,7 @@ def get_clean_data():
 
 
 def add_sidebar():
-  st.sidebar.header("Cell Nuclei Measurements")
+  st.sidebar.header("Breast Cell Measurements")
   
   data = get_clean_data()
   
@@ -60,7 +60,8 @@ def add_sidebar():
       label,
       min_value=float(0),
       max_value=float(data[key].max()),
-      value=float(data[key].mean())
+      value=float(data[key].mean()),
+      style={"background-color": "skyblue"}
     )
     
   return input_dict
@@ -102,7 +103,8 @@ def get_radar_chart_mean(input_data):
         ],
         theta=categories,
         fill='toself',
-        name='Mean Value'
+        name='Mean Value',
+        line_color='blue'
   ))
     
     fig.update_layout(
@@ -136,7 +138,8 @@ def get_radar_chart_standard(input_data):
         ],
         theta=categories,
         fill='toself',
-        name='Standard Error'
+        name='Standard Error',
+        line_color='skyblue'
   ))
     fig.update_layout(
     polar=dict(
@@ -171,7 +174,8 @@ def get_radar_chart_worst(input_data):
         ],
         theta=categories,
         fill='toself',
-        name='Worst Value'
+        name='Worst Value',
+        line_color='red'
   ))
     
     
@@ -208,7 +212,8 @@ def get_radar_chart(input_data):
         ],
         theta=categories,
         fill='toself',
-        name='Mean Value'
+        name='Mean Value',
+        line_color='blue'
   ))
   fig.add_trace(go.Scatterpolar(
         r=[
@@ -218,7 +223,8 @@ def get_radar_chart(input_data):
         ],
         theta=categories,
         fill='toself',
-        name='Standard Error'
+        name='Standard Error',
+        line_color='skyblue'
   ))
   fig.add_trace(go.Scatterpolar(
         r=[
@@ -229,7 +235,8 @@ def get_radar_chart(input_data):
         ],
         theta=categories,
         fill='toself',
-        name='Worst Value'
+        name='Worst Value',
+        line_color='red'
   ))
 
   fig.update_layout(
