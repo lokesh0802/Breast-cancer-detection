@@ -290,7 +290,7 @@ def main():
   col1, col2 = st.columns([4,1])
   
   with col1:
-    radar_chart = get_radar_chart(input_data)
+    radar_chart = get_radar_chart_mean(input_data)
     st.plotly_chart(radar_chart)
   with col2:
     add_predictions(input_data)
