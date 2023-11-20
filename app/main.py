@@ -273,7 +273,7 @@ def add_predictions(input_data):
   st.write("Probability of being benign: ", model.predict_proba(input_array_scaled)[0][0])
   st.write("Probability of being malicious: ", model.predict_proba(input_array_scaled)[0][1])
   
-  st.write("This app can assist medical professionals in making a diagnosis, but should not be used as a substitute for a professional diagnosis.")
+  st.write("A breast cancer prediction app serves as a multifaceted tool with significant implications for healthcare. Primarily designed for early detection, the app utilizes machine learning models to predict the likelihood of malignancy in breast masses based on provided measurements. This predictive capability not only aids medical professionals, including oncologists and radiologists, in their diagnostic processes but also empowers patients with valuable insights into their breast health. Through risk assessments and informative predictions, the app contributes to proactive health management.")
 
 
 
