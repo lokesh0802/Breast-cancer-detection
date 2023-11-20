@@ -344,16 +344,20 @@ def main():
         radar_chart_mean = get_radar_chart_mean(input_data)
     st.plotly_chart(radar_chart_mean)
     
-    radar_chart_standard = get_radar_chart_standard(input_data)
-    st.plotly_chart(radar_chart_standard)
+
     
 
     with col2:
-            radar_chart_worst = get_radar_chart_worst(input_data)
-    st.plotly_chart(radar_chart_worst)
+        
+            radar_chart_standard = get_radar_chart_standard(input_data)
+    st.plotly_chart(radar_chart_standard)
+
 
     with col3:
-        radar_chart = get_radar_chart(input_data)
+        radar_chart_worst = get_radar_chart_worst(input_data)
+    st.plotly_chart(radar_chart_worst)
+    
+    radar_chart = get_radar_chart(input_data)
     st.plotly_chart(radar_chart)
     add_predictions(input_data)
 
