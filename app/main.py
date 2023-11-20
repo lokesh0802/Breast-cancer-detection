@@ -338,26 +338,24 @@ def main():
     st.write("6. Pain or Discomfort: Some individuals may experience discomfort or pain in the breast or nipple area.")
     st.write("7. Swelling: Swelling or enlargement of one breast without an apparent cause.")
     st.write("8. Lymph Node Changes: Swelling or changes in the lymph nodes under the arm or around the collarbone, indicating potential spread.")
-    col1, col2 = st.columns([4, 1])
+    col1, col2,col3 = st.columns([4, 1,4])
 
-    #with col1:
-    radar_chart_mean = get_radar_chart_mean(input_data)
+    with col1:
+        radar_chart_mean = get_radar_chart_mean(input_data)
     st.plotly_chart(radar_chart_mean)
     
     radar_chart_standard = get_radar_chart_standard(input_data)
     st.plotly_chart(radar_chart_standard)
     
-    radar_chart_worst = get_radar_chart_worst(input_data)
+
+    with col2:
+            radar_chart_worst = get_radar_chart_worst(input_data)
     st.plotly_chart(radar_chart_worst)
-    
-    radar_chart = get_radar_chart(input_data)
+
+    with col3:
+        radar_chart = get_radar_chart(input_data)
     st.plotly_chart(radar_chart)
     add_predictions(input_data)
-
-    #with col2:
-
-    
-       
 
 
 if __name__ == '__main__':
