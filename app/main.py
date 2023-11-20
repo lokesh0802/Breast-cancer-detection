@@ -341,6 +341,11 @@ def main():
     col1, col2 = st.columns([4, 1])
 
     with col1:
+        st.markdown("""<style>
+            .margin-left {
+                margin-left: -20px !important;
+            }
+        </style>""", unsafe_allow_html=True)
         radar_chart_mean = get_radar_chart_mean(input_data)
         st.plotly_chart(radar_chart_mean)
 
@@ -351,6 +356,12 @@ def main():
         st.plotly_chart(radar_chart_worst)
 
     with col2:
+        # Add margin to the right of the column
+        st.markdown("""<style>
+            .margin-right {
+                margin-right: -20px !important;
+            }
+        </style>""", unsafe_allow_html=True)
         radar_chart = get_radar_chart(input_data)
         st.plotly_chart(radar_chart)
 
