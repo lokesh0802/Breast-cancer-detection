@@ -324,25 +324,22 @@ def main():
     st.title("Breast Cancer Predictor")
     st.write("Please connect this app to your cytology lab to help diagnose breast cancer from your tissue sample. This app predicts using a machine learning model whether a breast mass is benign or malignant based on the measurements it receives from your cytology lab. You can also update the measurements by hand using the sliders in the sidebar.")
 
-    col1, col2, col3, col4, col5 = st.columns([4, 1, 1, 4, 1])
+    col1, col2 = st.columns([4, 1])
 
     with col1:
         radar_chart_mean = get_radar_chart_mean(input_data)
         st.plotly_chart(radar_chart_mean)
 
-    with col2:
         radar_chart_standard = get_radar_chart_standard(input_data)
         st.plotly_chart(radar_chart_standard)
 
-    with col3:
         radar_chart_worst = get_radar_chart_worst(input_data)
         st.plotly_chart(radar_chart_worst)
 
-    with col4:
+    with col2:
         radar_chart = get_radar_chart(input_data)
         st.plotly_chart(radar_chart)
 
-    with col5:
         add_predictions(input_data)
 
 
