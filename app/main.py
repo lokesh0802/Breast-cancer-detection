@@ -338,29 +338,32 @@ def main():
     st.write("6. Pain or Discomfort: Some individuals may experience discomfort or pain in the breast or nipple area.")
     st.write("7. Swelling: Swelling or enlargement of one breast without an apparent cause.")
     st.write("8. Lymph Node Changes: Swelling or changes in the lymph nodes under the arm or around the collarbone, indicating potential spread.")
-    col1, col2,col3 = st.columns([4, 1,4])
 
+
+    col1, col2 = st.columns(2)  # Divide the screen into two columns
+
+    # Display the first two radar charts horizontally
     with col1:
         radar_chart_mean = get_radar_chart_mean(input_data)
-    st.plotly_chart(radar_chart_mean)
-    
-
-    
+        st.plotly_chart(radar_chart_mean)
 
     with col2:
-        
-            radar_chart_standard = get_radar_chart_standard(input_data)
-    st.plotly_chart(radar_chart_standard)
+        radar_chart_standard = get_radar_chart_standard(input_data)
+        st.plotly_chart(radar_chart_standard)
 
+    # Display the next two radar charts vertically
+    col3, col4 = st.columns(2)  # Divide the screen into two columns
 
     with col3:
         radar_chart_worst = get_radar_chart_worst(input_data)
-    st.plotly_chart(radar_chart_worst)
-    
-    radar_chart = get_radar_chart(input_data)
-    st.plotly_chart(radar_chart)
-    add_predictions(input_data)
+        st.plotly_chart(radar_chart_worst)
 
+    with col4:
+        radar_chart = get_radar_chart(input_data)
+        st.plotly_chart(radar_chart)
+
+    # Add predictions below the radar charts
+    add_predictions(input_data)
 
 if __name__ == '__main__':
     main()
