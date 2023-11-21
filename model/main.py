@@ -13,7 +13,7 @@ def create_model(data):
     X_scaled = scaler.fit_transform(X)
     
     # perform clustering
-    kmeans = KMeans(n_clusters=2, random_state=42)
+    kmeans = KMeans(n_clusters=3, random_state=42)
     data['cluster'] = kmeans.fit_predict(X_scaled)
     
     return kmeans, scaler
