@@ -16,7 +16,7 @@ def get_clean_data():
 
 
 def add_sidebar():
-  st.sidebar.header("Breast Cell Measurements")
+  st.sidebar.header("Histopathological Variability")
   
   data = get_clean_data()
   
@@ -291,7 +291,7 @@ def add_predictions(input_data):
 #   input_data = add_sidebar()
   
 #   with st.container():
-#     st.title("Breast Cancer Predictor")
+#     st.title("Mammary neoplasmr")
 #     st.write("Please connect this app to your cytology lab to help diagnose breast cancer form your tissue sample. This app predicts using a machine learning model whether a breast mass is benign or malignant based on the measurements it receives from your cytosis lab. You can also update the measurements by hand using the sliders in the sidebar. ")
   
 #   col1, col2,col3,col4,col5 = st.columns([4,1])
@@ -328,7 +328,7 @@ def main():
 
     input_data = add_sidebar()
 
-    st.title("Breast Cancer Predictor")
+    st.title("Mammary neoplasm")
     st.write("Breast cancer symptoms can manifest in various ways, and awareness of these signs is crucial for early detection and intervention.")
     st.write("1. Lump or Mass: The presence of a palpable lump or mass in the breast, distinguishable from the surrounding tissue.")
     st.write("2. Changes in Size or Shape: Observable alterations in the size or shape of the breast, including asymmetry between breasts.") 
